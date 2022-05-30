@@ -17,7 +17,7 @@ const newsProto = grpc.loadPackageDefinition(packageDefinition)
 
 const server = new grpc.Server()
 
-const companies = [{
+let companies = [{
         id: "1",
         name: "Dell",
         sector: "IT",
@@ -83,6 +83,6 @@ server.addService(newsProto.CompanyService.service, {
 })
 
 server.bindAsync("127.0.0.1:30001", grpc.ServerCredentials.createInsecure(), (error, port) => {
-    console.log("Server is running on port:", 30001)
+    console.log("Server is running on port:", port);
     server.start()
 });
