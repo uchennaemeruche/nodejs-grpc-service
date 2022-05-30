@@ -71,11 +71,11 @@ server.addService(newsProto.CompanyService.service, {
     updateCompany: (_, callback) => {
         const companyId = _.request.id;
         const company = companies.find(({ id }) => id == companyId)
-        company.name = _.request.name
-        company.sector = _.request.sector
-        company.category = _.request.category
-        company.is_startup = _.request.is_startup
-        company.revenue = _.request.revenue
+        if (_.request.name) company.name = _.request.name;
+        if (_.request.sector) company.sector = _.request.sector;
+        if (_.request.category) company.category = _.request.category;
+        if (_.request.is_startup) company.is_startup = _.request.is_startup;
+        if (_.request.revenue) company.revenue = _.request.revenue;
 
         callback(null, company)
     }
