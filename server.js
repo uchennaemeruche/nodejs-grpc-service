@@ -54,8 +54,8 @@ server.addService(newsProto.CompanyService.service, {
     },
     getCompany: (_, callback) => {
         const companyId = _.request.id;
-        const company = companies.find(({ id }) => id == companyId);
-        callback(null, company)
+        const _company = companies.find(({ id }) => id == companyId);
+        callback(null, _company)
 
     },
     addCompany: (req, callback) => {
