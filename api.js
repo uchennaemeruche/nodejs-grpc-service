@@ -14,14 +14,10 @@ app.get("/companies", (req, res) => {
 })
 
 app.get("/companies/:id", (req, res) => {
-    client.getCompany({
-            id: req.params.id,
-        },
-        (error, company) => {
-            if (!error) throw error;
-            res.json(company);
-        }
-    );
+    client.getCompany({ id: req.params.id }, (error, company) => {
+        if (error) throw error;
+        res.json(company);
+    });
 })
 
 
