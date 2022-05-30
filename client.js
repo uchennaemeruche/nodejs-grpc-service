@@ -15,7 +15,7 @@ const packageDefinition = grpcProtoLoader.loadSync(PROTO_PATH, opts);
 const CompanyService = grpc.loadPackageDefinition(packageDefinition).CompanyService;
 
 const client = new CompanyService(
-    "localhost:50051",
+    "localhost:30001",
     grpc.credentials.createInsecure()
 );
 
