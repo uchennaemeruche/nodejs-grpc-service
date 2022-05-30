@@ -52,6 +52,12 @@ server.addService(newsProto.CompanyService.service, {
     getAllCompanies: (_, callback) => {
         callback(null, { companies })
     },
+    getCompany: (_, callback) => {
+        const companyId = _.request.id;
+        const company = companies.find(({ id }) => id == companyId);
+        callback(null, company)
+
+    },
     addCompany: (req, callback) => {
         const _company = { id: uuidv4(), ...req.request };
         companies.push(_company)
@@ -61,6 +67,17 @@ server.addService(newsProto.CompanyService.service, {
         const companyId = _.request.id;
         companies = companies.filter(({ id }) => id !== companyId)
         callback(null, {})
+    },
+    updateCompany: (_, callback) => {
+        const companyId = _.request.id;
+        const company = companies.find(({ id }) => id == companyId)
+        company.name = _.request.name
+        company.sector = _.request.sector
+        company.category = _.request.category
+        company.is_startup = _.request.is_startup
+        company.revenue = _.request.revenue
+
+        callback(null, company)
     }
 
 })

@@ -36,6 +36,8 @@ service CompanyService{
     rpc GetAllCompanies (Empty) returns (Companies) {}
     rpc AddCompany(Company) returns (Company){}
     rpc DeleteCompany(companyId) returns(Empty){}
+    rpc UpdateCompany (Company) returns (Company);
+    rpc GetCompany (companyId) returns (Company);
 }
 
 
