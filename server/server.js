@@ -72,14 +72,14 @@ server.addService(newsProto.CompanyService.service, {
     },
     updateCompany: (_, callback) => {
         const companyId = _.request.id;
-        const company = companies.find(({ id }) => id == companyId)
-        if (company) {
-            if (_.request.name) company.name = _.request.name;
-            if (_.request.sector) company.sector = _.request.sector;
-            if (_.request.category) company.category = _.request.category;
-            if (_.request.is_startup) company.is_startup = _.request.is_startup;
-            if (_.request.revenue) company.revenue = _.request.revenue;
-            callback(null, company)
+        const _company = companies.find(({ id }) => id == companyId)
+        if (_company) {
+            if (_.request.name) _company.name = _.request.name;
+            if (_.request.sector) _company.sector = _.request.sector;
+            if (_.request.category) _company.category = _.request.category;
+            if (_.request.is_startup) _company.is_startup = _.request.is_startup;
+            if (_.request.revenue) _company.revenue = _.request.revenue;
+            callback(null, _company)
         } else callback({ code: grpc.status.NOT_FOUND, details: 'Not Found' })
 
     }
