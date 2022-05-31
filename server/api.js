@@ -1,6 +1,6 @@
 const app = require("express")()
 
-const client = require("./client")
+const client = require("../client")
 const PORT = 5000,
     HOST = "localhost"
 
