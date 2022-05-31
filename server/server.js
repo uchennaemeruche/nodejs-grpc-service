@@ -67,7 +67,10 @@ server.addService(newsProto.CompanyService.service, {
     },
     deleteCompany: (_, callback) => {
         const companyId = _.request.id;
-        companies = companies.filter(({ id }) => id !== companyId)
+        let companyIdx = companies.findIndex(({ id }) => id == companyId)
+        if (companyIdx == -1) callback({ code: grpc.status.NOT_FOUND, details: 'Not Found' })
+        const deletedCompany = companies.splice(companyIdx, 1)
+        console.log("Deleted Company", deletedCompany)
         callback(null, {})
     },
     updateCompany: (_, callback) => {
